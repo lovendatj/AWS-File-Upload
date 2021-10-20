@@ -1,11 +1,8 @@
-import datetime
-import logging
+import StandardLibrary.Services.Notion as Notion
+from StandardLibrary.Utils.FileData import read_json
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+NOTION_KEY = read_json('./secret.json')['notion']['key']
+DEFAULT_DB = read_json('./secret.json')['notion']['databaseID']
 
 
-def run(event, context):
-    current_time = datetime.datetime.now().time()
-    name = context.function_name
-    logger.info("Your cron function " + name + " ran at " + str(current_time))
+notion = Notion(NOTION_KEY, DEFAULT_DB)
