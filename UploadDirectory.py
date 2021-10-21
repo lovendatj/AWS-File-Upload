@@ -14,7 +14,7 @@ if filterFile is not None:
     files = glob.glob(f'../{readPath}/{filterFile}')
 else:
     files = glob.glob(f'../{readPath}/*')
-print(files)
+print('files: ', files)
 # for f in files:
 #     with open(f, 'rb') as file:
 #         print(f'Processing {file.name}')
