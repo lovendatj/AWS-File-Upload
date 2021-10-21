@@ -1,0 +1,18 @@
+{
+    "notion": {
+        "baseURL": "https://api.notion.com"
+    },
+    "aws-services": {
+        "s3": {
+            "notion": {
+                "name": "notion-resources"
+            }
+        },
+        "dynamo": {
+            "reading": {
+                "name": "ReadingTable",
+                "key": "textId"
+            }
+        }
+    }
+}
