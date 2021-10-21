@@ -4,7 +4,7 @@ import sys
 import glob
 import os
 from datetime import datetime
-
+print(sys.argv)
 readPath = sys.argv[1]
 bucketAlias = sys.argv[2]
 cleanUp = sys.argv[3]
