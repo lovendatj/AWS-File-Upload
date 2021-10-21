@@ -10,7 +10,6 @@ try:
     filterFile = sys.argv[3]
 except:
     filterFile = None
-print(f'Reading {readPath}, Bucket Alias {bucketAlias}, Matching {filterFile}')
 if filterFile is not None:
     files = glob.glob(f'{readPath}/{filterFile}')
 else:
@@ -18,6 +17,7 @@ else:
 
 for f in files:
     with open(f, 'rb') as file:
+        print(f'Processing {file.name}')
         file_name, url = s3.upload_file(file=file,
                                         bucket_alias='notion')
         dynamo.insert_row('reading', {
