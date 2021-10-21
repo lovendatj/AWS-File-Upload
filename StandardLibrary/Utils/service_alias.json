@@ -1,7 +1,4 @@
 {
-    "notion": {
-        "baseURL": "https://api.notion.com"
-    },
     "aws-services": {
         "s3": {
             "notion": {

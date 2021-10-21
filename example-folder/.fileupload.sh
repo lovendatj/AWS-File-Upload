@@ -11,31 +11,31 @@ helpFunction(){
     echo ""
     exit 1 # Exit script after printing help
 }
-while getopts "p:b:f:c" opt
-do
-    case "$opt" in
-        p ) readPath="$OPTARG" ;;
-        b ) bucketAlias="$OPTARG" ;;
-        f ) 
-            if [[ ! -z "$OPTARG" ]]; then
-                filterFile="$OPTARG"
-            fi ;;
-        c ) 
-            if [[ ! -z "$OPTARG" ]]; then
-                cleanUp=true
-            else
-                cleanUp=false
-            fi ;;
-        ? ) helpFunction ;;
-    esac
-done
+# while getopts "p:b:f:c" opt
+# do
+#     case "$opt" in
+#         p ) readPath="$OPTARG" ;;
+#         b ) bucketAlias="$OPTARG" ;;
+#         f ) 
+#             if [[ ! -z "$OPTARG" ]]; then
+#                 filterFile="$OPTARG"
+#             fi ;;
+#         c ) 
+#             if [[ ! -z "$OPTARG" ]]; then
+#                 cleanUp=true
+#             else
+#                 cleanUp=false
+#             fi ;;
+#         ? ) helpFunction ;;
+#     esac
+# done
 
 # Print helpFunction in case parameters are empty
-if [ -z "$readPath" ] || [ -z "$bucketAlias" ]
-then
-    echo "Additional params required"
-    helpFunction
-fi
+# if [ -z "$readPath" ] || [ -z "$bucketAlias" ]
+# then
+#     echo "Additional params required"
+#     helpFunction
+# fi
 
 # Addtional Supporting Functions
 remove_git(){
@@ -44,18 +44,17 @@ remove_git(){
     rm -rf "./$path"
 }
 get_exe(){
-    file="$(basename $REPO)"
-    path="${file%%.*}"    
+    local file="$(basename $REPO)"
+    local path="${file%%.*}"    
     rm -rf $path
     echo "Grabbing Repo: {$REPO}"
     git clone --quiet "$REPO"
-    dir=path
     echo "Entering ./$path"
     cd "./$path"
 
 }
 clean_up(){
-    echo "Not Implemented"
+    local profile_name=""
 }
 file_upload(){
     echo "Writing to S3"
@@ -70,6 +69,7 @@ file_upload(){
 
 cd "$readPath"
 REPO="https://github.com/lovendatj/Notion-Integration.git"
+echo $HOME
 get_exe $REPO
 file_upload
 remove_git

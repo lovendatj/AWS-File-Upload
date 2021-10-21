@@ -1,5 +1,5 @@
 org: lovendatj
-service: aws-notion-readings
+service: aws-file-upload
 frameworkVersion: '2'
 
 
@@ -18,13 +18,11 @@ provider:
         - Effect: 'Allow'
           Resource: '*'
           Action: 's3:*'
-        - Effect: 'Allow'
-          Resource: '*'
-          Action: 'lambda:*'
-
-functions:
-  readingList:
-    handler: CreateReadingList.reading_list
+          
+#  TODO Add Function for trigger on upload
+# functions:
+#   readingList:
+#     handler: CreateReadingList.reading_list
 
 resources:
   Resources:

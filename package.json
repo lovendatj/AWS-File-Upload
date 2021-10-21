@@ -1,7 +1,8 @@
 {
-  "name": "aws-notion-integration",
+  "name": "aws-file-upload",
   "version": "1.0.0",
-  "description": "aws-notion-integration",
-  "author": "",
+  "description": "aws-file-upload",
+  "author": "John Murray",
+  "gitURL": "https://github.com/lovendatj",
   "license": "MIT"
 }
