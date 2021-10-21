@@ -29,7 +29,7 @@ for f in files:
             'Name': file_name,
             'Read': False,
             'URL': url,
-            'Date Added': datetime.now().strftime('%m-%d-%Y')
+            'Date Added': datetime.now().strftime('%m-%d-%Y %H:%M:%S')
         })
     try:
         if cleanUp:
