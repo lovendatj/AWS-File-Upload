@@ -59,9 +59,9 @@ clean_up(){
 file_upload(){
     if [ ! -z $filterFile ]
     then
-        py test.py readPath=$readPath bucketAlias=$bucketAlias filter=$filterFile 
+        py UploadDirectory.py $readPath $bucketAlias $filterFile 
     else    
-        py test.py readPath=$readPath bucketAlias=$bucketAlias
+        py UploadDirectory.py $readPath $bucketAlias
     fi
 }
 
