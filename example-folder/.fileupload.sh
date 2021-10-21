@@ -62,9 +62,9 @@ file_upload(){
 
     if [ ! -z $filterFile ]
     then
-        py UploadDirectory.py $readPath $bucketAlias $filterFile 
+        py UploadDirectory.py $readPath $bucketAlias $cleanUp $filterFile 
     else    
-        py UploadDirectory.py $readPath $bucketAlias
+        py UploadDirectory.py $readPath $bucketAlias $cleanUp
     fi
 }
 
@@ -73,8 +73,3 @@ REPO="https://github.com/lovendatj/Notion-Integration.git"
 get_exe $REPO
 file_upload
 remove_git
-
-if [ $cleanUp ]
-then
-    clean_up
-fi

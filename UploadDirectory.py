@@ -2,19 +2,21 @@ import StandardLibrary.AWS.Dynamo as dynamo
 import StandardLibrary.AWS.S3 as s3
 import sys
 import glob
+import os
 from datetime import datetime
 
 readPath = sys.argv[1]
 bucketAlias = sys.argv[2]
+cleanUp = sys.argv[3]
 try:
-    filterFile = sys.argv[3]
+    filterFile = sys.argv[4]
 except:
     filterFile = None
 if filterFile is not None:
     files = glob.glob(f'../{readPath}/{filterFile}')
 else:
     files = glob.glob(f'../{readPath}/*.*')
-print('files: ', files)
+
 for f in files:
     with open(f, 'rb') as file:
         print(f'Processing {file.name}')
@@ -26,3 +28,8 @@ for f in files:
             'URL': url,
             'Date Added': datetime.now().strftime('%m-%d-%Y')
         })
+    try:
+        if cleanUp:
+            os.remove(f)
+    except:
+        continue
