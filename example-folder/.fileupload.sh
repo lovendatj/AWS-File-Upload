@@ -11,7 +11,7 @@ helpFunction(){
     echo ""
     exit 1 # Exit script after printing help
 }
-while getopts "p:b:f:c:" opt
+while getopts "p:b:f:c" opt
 do
     case "$opt" in
         p ) readPath="$OPTARG" ;;
