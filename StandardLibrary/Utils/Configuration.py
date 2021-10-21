@@ -13,12 +13,12 @@ def notion_baseURL(sub: str = None) -> str:
     return config_data['notion']['baseURL']
 
 
-def bucket_lookup(sub: str = None) -> str:
-    pass
+def bucket_lookup(bucket_alias: str = None) -> str:
+    return config_data['aws-services']['s3'][bucket_alias]
 
 
-def table_lookup(sub: str = None) -> str:
-    pass
+def table_lookup(table_alias: str = None) -> str:
+    return config_data['aws-services']['dynamo'][table_alias]
 
 
 def lambda_lookup(sub: str = None) -> str:

@@ -1,23 +1,42 @@
 org: lovendatj
-app: aws-python-scheduled-cron-project
-service: aws-python-scheduled-cron-project
-
+service: aws-notion-readings
 frameworkVersion: '2'
 
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.9
+  profile: lovendatj
   lambdaHashingVersion: 20201221
+  iam:
+    role:
+      name: role
+      statements:
+        - Effect: 'Allow'
+          Resource: '*'
+          Action: 'dynamodb:*'
+        - Effect: 'Allow'
+          Resource: '*'
+          Action: 's3:*'
+        - Effect: 'Allow'
+          Resource: '*'
+          Action: 'lambda:*'
 
 functions:
-  rateHandler:
-    handler: handler.run
-    events:
-      # Invoke Lambda function every minute
-      - schedule: rate(1 minute)
-  cronHandler:
-    handler: handler.run
-    events:
-      # Invoke Lambda function every 2nd minute from Mon-Fri
-      - schedule: cron(0/2 * ? * MON-FRI *)
+  readingList:
+    handler: CreateReadingList.reading_list
+
+resources:
+  Resources:
+    ReadingTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ReadingTable
+        AttributeDefinitions:
+          - AttributeName: textId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: textId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+    
