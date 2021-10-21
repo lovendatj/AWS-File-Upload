@@ -18,22 +18,22 @@ provider:
         - Effect: 'Allow'
           Resource: '*'
           Action: 's3:*'
-          
-#  TODO Add Function for trigger on upload
-# functions:
-#   readingList:
-#     handler: CreateReadingList.reading_list
 
 resources:
   Resources:
-    ReadingTable:
+    TableAsset:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ReadingTable
+        TableName: {TABLE_NAME}
         AttributeDefinitions:
-          - AttributeName: textId
+          - AttributeName: id
             AttributeType: S
         KeySchema:
-          - AttributeName: textId
+          - AttributeName: id
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
+    
+    S3Assets:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:service}-${self:provider.stage}-assets

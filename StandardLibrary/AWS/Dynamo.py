@@ -1,5 +1,4 @@
 import boto3
-import json
 from typing import Any
 from ..Utils.Configuration import table_lookup
 from ..Utils.Identification import get_id
