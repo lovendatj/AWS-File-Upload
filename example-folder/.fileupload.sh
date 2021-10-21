@@ -60,12 +60,12 @@ clean_up(){
 file_upload(){
     echo "Writing to S3"
 
-    # if [ ! -z $filterFile ]
-    # then
-    #     py UploadDirectory.py $readPath $bucketAlias $filterFile 
-    # else    
-    #     py UploadDirectory.py $readPath $bucketAlias
-    # fi
+    if [ ! -z $filterFile ]
+    then
+        py UploadDirectory.py $readPath $bucketAlias $filterFile 
+    else    
+        py UploadDirectory.py $readPath $bucketAlias
+    fi
 }
 
 cd "$readPath"
