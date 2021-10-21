@@ -13,7 +13,7 @@ except:
 if filterFile is not None:
     files = glob.glob(f'../{readPath}/{filterFile}')
 else:
-    files = glob.glob(f'../{readPath}/*.')
+    files = glob.glob(f'../{readPath}/*.*')
 print('files: ', files)
 for f in files:
     with open(f, 'rb') as file:
