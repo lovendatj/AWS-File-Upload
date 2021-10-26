@@ -11,31 +11,31 @@ helpFunction(){
     echo ""
     exit 1 # Exit script after printing help
 }
-# while getopts "p:b:f:c" opt
-# do
-#     case "$opt" in
-#         p ) readPath="$OPTARG" ;;
-#         b ) bucketAlias="$OPTARG" ;;
-#         f ) 
-#             if [[ ! -z "$OPTARG" ]]; then
-#                 filterFile="$OPTARG"
-#             fi ;;
-#         c ) 
-#             if [[ ! -z "$OPTARG" ]]; then
-#                 cleanUp=true
-#             else
-#                 cleanUp=false
-#             fi ;;
-#         ? ) helpFunction ;;
-#     esac
-# done
+while getopts "p:b:f:c" opt
+do
+    case "$opt" in
+        p ) readPath="$OPTARG" ;;
+        b ) bucketAlias="$OPTARG" ;;
+        f ) 
+            if [[ ! -z "$OPTARG" ]]; then
+                filterFile="$OPTARG"
+            fi ;;
+        c ) 
+            if [[ ! -z "$OPTARG" ]]; then
+                cleanUp=true
+            else
+                cleanUp=false
+            fi ;;
+        ? ) helpFunction ;;
+    esac
+done
 
-# Print helpFunction in case parameters are empty
-# if [ -z "$readPath" ] || [ -z "$bucketAlias" ]
-# then
-#     echo "Additional params required"
-#     helpFunction
-# fi
+Print helpFunction in case parameters are empty
+if [ -z "$readPath" ] || [ -z "$bucketAlias" ]
+then
+    echo "Additional params required"
+    helpFunction
+fi
 
 # Addtional Supporting Functions
 remove_git(){
